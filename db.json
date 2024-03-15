@@ -1,0 +1,334 @@
+{
+  "data": [
+    {
+      "date":"01-01-2023",
+      "values":{
+        "coca": 1,
+        "monster": 2,
+        "agua": 3,
+        "suco": 1,
+        "redbull": 10,
+        "fanta": 0
+      } 
+    },
+    {
+      "date":"02-01-2023",
+      "values":{
+        "coca": 2,
+        "monster": 4,
+        "agua": 6,
+        "suco": 2,
+        "redbull": 20,
+        "fanta": 1
+      } 
+    },
+    {
+      "date":"03-01-2023",
+      "values":{
+        "coca": 3,
+        "monster": 6,
+        "agua": 9,
+        "suco": 3,
+        "redbull": 25,
+        "fanta": 3
+      } 
+    },
+    {
+      "date":"04-01-2023",
+      "values":{
+        "coca": 5,
+        "monster": 9,
+        "agua": 12,
+        "suco": 5,
+        "redbull": 30,
+        "fanta": 6
+      } 
+    },
+    {
+      "date":"05-01-2023",
+      "values":{
+        "coca": 7,
+        "monster": 12,
+        "agua": 20,
+        "suco": 7,
+        "redbull": 32,
+        "fanta": 9
+      } 
+    },
+    {
+      "date":"06-01-2023",
+      "values":{
+        "coca": 10,
+        "monster": 16,
+        "agua": 25,
+        "suco": 10,
+        "redbull": 40,
+        "fanta": 12
+      }
+    },
+    {
+      "date":"07-01-2023",
+      "values":{
+        "coca": 15,
+        "monster": 20,
+        "agua": 30,
+        "suco": 15,
+        "redbull": 42,
+        "fanta": 13
+      } 
+    },
+    {
+      "date":"08-01-2023",
+      "values":{
+        "coca": 19,
+        "monster": 20,
+        "agua": 32,
+        "suco": 20,
+        "redbull": 43,
+        "fanta": 13
+      } 
+    },
+    {
+      "date":"09-01-2023",
+      "values":{
+        "coca": 20,
+        "monster": 23,
+        "agua": 35,
+        "suco": 21,
+        "redbull": 45,
+        "fanta": 20
+      } 
+    },
+    {
+      "date":"10-01-2023",
+      "values":{
+        "coca": 20,
+        "monster": 25,
+        "agua": 37,
+        "suco": 22,
+        "redbull": 50,
+        "fanta": 21
+      } 
+    },
+    {
+      "date":"11-01-2023",
+      "values":{
+        "coca": 21,
+        "monster": 25,
+        "agua": 40,
+        "suco": 23,
+        "redbull": 51,
+        "fanta": 22
+      } 
+    },
+    {
+      "date":"12-01-2023",
+      "values":{
+        "coca": 22,
+        "monster": 26,
+        "agua": 43,
+        "suco": 24,
+        "redbull": 52,
+        "fanta": 23
+      } 
+    },
+    {
+      "date":"13-01-2023",
+      "values":{
+        "coca": 23,
+        "monster": 27,
+        "agua": 46,
+        "suco": 28,
+        "redbull": 52,
+        "fanta": 29
+      } 
+    },
+    {
+      "date":"14-01-2023",
+      "values":{
+        "coca": 24,
+        "monster": 28,
+        "agua": 50,
+        "suco": 29,
+        "redbull": 53,
+        "fanta": 32
+      } 
+    },
+    {
+      "date":"15-01-2023",
+      "values":{
+        "coca": 25,
+        "monster": 29,
+        "agua": 52,
+        "suco": 30,
+        "redbull": 53,
+        "fanta": 35
+      } 
+    },
+    {
+      "date":"16-01-2023",
+      "values":{
+        "coca": 30,
+        "monster": 29,
+        "agua": 55,
+        "suco": 32,
+        "redbull": 54,
+        "fanta": 37
+      } 
+    },
+    {
+      "date":"17-01-2023",
+      "values":{
+        "coca": 35,
+        "monster": 32,
+        "agua": 58,
+        "suco": 35,
+        "redbull": 58,
+        "fanta": 40
+      } 
+    },
+    {
+      "date":"18-01-2023",
+      "values":{
+        "coca": 42,
+        "monster": 35,
+        "agua": 60,
+        "suco": 38,
+        "redbull": 60,
+        "fanta": 45
+      } 
+    },
+    {
+      "date":"19-01-2023",
+      "values":{
+        "coca": 48,
+        "monster": 36,
+        "agua": 61,
+        "suco": 38,
+        "redbull": 62,
+        "fanta": 50
+      } 
+    },
+    {
+      "date":"20-01-2023",
+      "values":{
+        "coca": 50,
+        "monster": 38,
+        "agua": 62,
+        "suco": 40,
+        "redbull": 65,
+        "fanta": 52
+      } 
+    },
+    {
+      "date":"21-01-2023",
+      "values":{
+        "coca": 52,
+        "monster": 40,
+        "agua": 65,
+        "suco": 44,
+        "redbull": 66,
+        "fanta": 53
+      } 
+    },
+    {
+      "date":"22-01-2023",
+      "values":{
+        "coca": 53,
+        "monster": 42,
+        "agua": 67,
+        "suco": 49,
+        "redbull": 67,
+        "fanta": 57
+      } 
+    },
+    {
+      "date":"23-01-2023",
+      "values":{
+        "coca": 54,
+        "monster": 45,
+        "agua": 69,
+        "suco": 52,
+        "redbull": 70,
+        "fanta": 60
+      } 
+    },
+    {
+      "date":"24-01-2023",
+      "values":{
+        "coca": 55,
+        "monster": 50,
+        "agua": 70,
+        "suco": 60,
+        "redbull": 73,
+        "fanta": 63
+      } 
+    },
+    {
+      "date":"25-01-2023",
+      "values":{
+        "coca": 56,
+        "monster": 52,
+        "agua": 72,
+        "suco": 70,
+        "redbull": 74,
+        "fanta": 65
+      } 
+    },
+    {
+      "date":"26-01-2023",
+      "values":{
+        "coca": 60,
+        "monster": 55,
+        "agua": 78,
+        "suco": 71,
+        "redbull": 75,
+        "fanta": 70
+      } 
+    },
+    {
+      "date":"27-01-2023",
+      "values":{
+        "coca": 61,
+        "monster": 56,
+        "agua": 80,
+        "suco": 75,
+        "redbull": 76,
+        "fanta": 72
+      } 
+    },
+    {
+      "date":"28-01-2023",
+      "values":{
+        "coca": 62,
+        "monster": 58,
+        "agua": 82,
+        "suco": 76,
+        "redbull": 78,
+        "fanta": 74
+      } 
+    },
+    {
+      "date":"29-01-2023",
+      "values":{
+        "coca": 69,
+        "monster": 60,
+        "agua": 83,
+        "suco": 80,
+        "redbull": 79,
+        "fanta": 75
+      } 
+    },
+    {
+      "date":"30-01-2023",
+      "values":{
+        "coca": 72,
+        "monster": 65,
+        "agua": 84,
+        "suco": 85,
+        "redbull": 80,
+        "fanta": 76
+      } 
+    }
+  ]
+}
