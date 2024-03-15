@@ -17,7 +17,7 @@ import {
   TooltipItem,
   BarControllerChartOptions,
 } from 'chart.js';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 
 
@@ -83,16 +83,17 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
 
   let countNumber: number = 0
   const chartRef = useRef(null);
-  const [chunks, setChunks] = useState<BlobPart[]>([]);
   const [recorder, setRecorder] = useState<MediaRecorder | null>(null);
+  let recorderMedia: any = {}
+  const chunksSeted: BlobPart[] = []
+
 
   const afterPlugin = {
     id: 'race',
-    // beforeInit: () => {
-    //   recorder2();
-    // },
+    afterInit: () => {
+      recorder2();
+    },
     afterRender: (chart: any) => {
-      console.log("chamou o after render")
       const chartData = chart.config._config
       handleUpdateData(chartData, chart, apiData)
     },
@@ -125,11 +126,6 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
         position: 'top',
       },
     },
-    animations: {
-      onComplete: ({initial}: {initial: any}) => {
-        if (initial) console.log(initial, 'acabou')
-      }
-    }
   } as unknown as OptionsType;
 
   // const startRecording = () => {
@@ -141,33 +137,29 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
   //   }
   // }
 
-  const recorder2 = () => {
-    console.log("RECORDER INICIOU")
-    console.log(chartRef.current)
+ const stopRecording = () => {
+    console.log('parou de gravar')
+    if(recorder && recorder.state !== 'inactive'){
+      recorder.stop();
+    }else{
+      console.error('Recorder não está gravando');
+    }
+  }
+
+  function recorder2 ()  {
+
     const canvasElt: HTMLCanvasElement | null = document.querySelector("canvas");
     const streamCanva = canvasElt!.captureStream();
-    const recorderMedia = new MediaRecorder(streamCanva)
-    const chunksSeted: BlobPart[] | undefined = []
+    recorderMedia = new MediaRecorder(streamCanva)
 
-    console.log(recorder, 'RECORDER STATE')
-    console.log(recorderMedia.state, 'MEDIA STATE')
-
-    recorderMedia.ondataavailable = (e) => { 
+    recorderMedia.ondataavailable = (e: any) => { 
       console.log(e.data, 'DATA')
       chunksSeted.push(e.data); 
     };
 
     recorderMedia.start();
 
-    console.log(chunksSeted, "CHUNKS SETED")
-
     setRecorder(recorderMedia)
-    setChunks(chunksSeted)
-
-    // setTimeout(() => {
-    //   recorderMedia.onstop = () => exportVideo(new Blob(chunksSeted, {type: "video/webm"}));
-    //   recorderMedia.stop();
-    // }, 15000); 
   }
 
   const exportVideo = (blob: Blob | MediaSource) =>{
@@ -185,7 +177,6 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
 
   function handleUpdateData(data: DataChartInterface, chart: any, fromApi: DataInterfaceApi[]) {
 
-    console.log("atualizando")
     const timer = setInterval(() => {
       const merged = data.data.labels.map((_, i) => {
         return {
@@ -218,9 +209,8 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
       data.data.datasets[0].borderColor = borderColorRace;
       
       if(countNumber !== fromApi.length) {    
-        console.log(countNumber, 'COUNT NUMBER')
         countNumber+=1
-
+        
         dataRaceArray[labelRace.indexOf("coca")] = fromApi[countNumber].values.coca
         dataRaceArray[labelRace.indexOf("monster")] = fromApi[countNumber].values.monster
         dataRaceArray[labelRace.indexOf("agua")] = fromApi[countNumber].values.agua
@@ -230,24 +220,15 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
 
         chart.update();
       }else{
-        console.log("else do handle update")        
+        chart.update();     
         clearInterval(timer)
+        recorderMedia.onstop = () => exportVideo(new Blob(chunksSeted, {type: "video/webm"}));
+        recorderMedia.stop();
+        stopRecording();
       }
-      // chart.update();
     }, 2000)
 
   }
-
-  console.log(chartRef, "chart ref")
-
-  // const stopRecording = () => {
-  //   console.log('parou de gravar')
-  //   if(recorder && recorder.state !== 'inactive'){
-  //     recorder.stop();
-  //   }else{
-  //     console.error('Recorder não está gravando');
-  //   }
-  // }
 
   // const exportVideo = () => {
   //   console.log('chamouExport = ', chunks)
@@ -267,38 +248,6 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
   //     console.error('nenhum dado pra gravar')
   //   }
   // } 
-
-  useEffect(() => {
-    console.log('useEffect')
-  
-    // const canvasElmnt = document.querySelector('canvas')
-    // if(!canvasElmnt) {
-    //   console.log("Not found element")
-    //   return
-    // }
-    
-    // const streamCanva = canvasElmnt.captureStream()
-    // const mediaRecorder = new MediaRecorder(streamCanva)
-    // const chunksSeted: BlobPart[] | undefined = []
-
-    // mediaRecorder.ondataavailable = (e) => chunksSeted.push(e.data)
-
-    // setChunks(chunksSeted)
-    // // mediaRecorder.ondataavailable = (e) => {
-    // //   setChunks((prevChunks) => [...prevChunks, e.data])
-    // // }
-
-    // mediaRecorder.start()
-
-    // setRecorder(mediaRecorder)
-
-    // return () => {
-    //   mediaRecorder.ondataavailable = null;
-    //   mediaRecorder.stop();
-    // }
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <div ref={chartRef}>
