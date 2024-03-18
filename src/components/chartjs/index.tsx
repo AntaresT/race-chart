@@ -17,7 +17,7 @@ import {
   TooltipItem,
   BarControllerChartOptions,
 } from 'chart.js';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 
 
@@ -83,7 +83,6 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
 
   let countNumber: number = 0
   const chartRef = useRef(null);
-  const [recorder, setRecorder] = useState<MediaRecorder | null>(null);
   let recorderMedia: any = {}
   const chunksSeted: BlobPart[] = []
 
@@ -128,24 +127,6 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
     },
   } as unknown as OptionsType;
 
-  // const startRecording = () => {
-  //   console.log('começou a gravar')
-  //   if(recorder){
-  //     recorder.start();
-  //   }else{
-  //     console.error('Recorder não iniciado')
-  //   }
-  // }
-
- const stopRecording = () => {
-    console.log('parou de gravar')
-    if(recorder && recorder.state !== 'inactive'){
-      recorder.stop();
-    }else{
-      console.error('Recorder não está gravando');
-    }
-  }
-
   function recorder2 ()  {
 
     const canvasElt: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -156,14 +137,10 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
       console.log(e.data, 'DATA')
       chunksSeted.push(e.data); 
     };
-
     recorderMedia.start();
-
-    setRecorder(recorderMedia)
   }
 
   const exportVideo = (blob: Blob | MediaSource) =>{
-    console.log(blob, 'Blob from export')
     const vid = document.createElement('video');
     vid.src = URL.createObjectURL(blob);
     vid.controls = true;
@@ -224,30 +201,10 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
         clearInterval(timer)
         recorderMedia.onstop = () => exportVideo(new Blob(chunksSeted, {type: "video/webm"}));
         recorderMedia.stop();
-        stopRecording();
       }
     }, 2000)
 
   }
-
-  // const exportVideo = () => {
-  //   console.log('chamouExport = ', chunks)
-  //   if(chunks.length > 0){
-  //     const blob = new Blob(chunks, { type: 'video/webm'})
-  //     // const url = URL.createObjectURL(blob)
-  //     const vid = document.createElement('video');
-  //     vid.src = URL.createObjectURL(blob);
-  //     vid.controls = true;
-  //     document.body.appendChild(vid);
-  //     const a = document.createElement('a');
-  //     a.download = 'myvid.webm';
-  //     a.href = vid.src;
-  //     a.textContent = 'download the video';
-  //     document.body.appendChild(a);
-  //   }else{
-  //     console.error('nenhum dado pra gravar')
-  //   }
-  // } 
 
   return (
     <div ref={chartRef}>
