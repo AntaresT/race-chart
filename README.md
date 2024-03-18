@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# React Race Chart With ChartJS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created to resolve the need to have a race chart and export it as a webm video.
+The export code was created using the MediaRecorder com JavaScript, that allows to record the screen
+and more specific part of the screen, in this case, the canvas tag that is responsible to show the Chart.
 
-Currently, two official plugins are available:
+## How to run
+```bash 
+  npm install 
+```
+To install all dependencies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Consider using PNPM for a faster installation
+> https://pnpm.io/
 
-## Expanding the ESLint configuration
+After the installation  you can use
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```bash
+  npm run dev
+```
+or 
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+  pnpm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This project uses JSON Server to store the mockup data.
+After started the project you can run the following command
+```bash
+  npx json-server db.json
+```
+> db.json is the name of the file that contains the data
+
+
+## Dependencies 
+- [React Chart JS](https://react-chartjs-2.js.org/)
+- [ChartJS](https://www.chartjs.org/)
+- [JSON Server](https://github.com/typicode/json-server)
+  
