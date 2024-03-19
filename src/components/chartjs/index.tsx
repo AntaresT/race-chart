@@ -90,7 +90,7 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
   const afterPlugin = {
     id: 'race',
     afterInit: () => {
-      recorder2();
+      recorder();
     },
     afterRender: (chart: any) => {
       const chartData = chart.config._config
@@ -127,17 +127,17 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
     },
   } as unknown as OptionsType;
 
-  function recorder2 ()  {
+  function recorder ()  {
 
     const canvasElt: HTMLCanvasElement | null = document.querySelector("canvas");
     const streamCanva = canvasElt!.captureStream();
     recorderMedia = new MediaRecorder(streamCanva)
 
     recorderMedia.ondataavailable = (e: any) => { 
-      console.log(e.data, 'DATA')
       chunksSeted.push(e.data); 
     };
     recorderMedia.start();
+    
   }
 
   const exportVideo = (blob: Blob | MediaSource) =>{
@@ -185,19 +185,23 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
       data.data.datasets[0].backgroundColor = bgColorRace;
       data.data.datasets[0].borderColor = borderColorRace;
       
-      if(countNumber !== fromApi.length) {    
+      if(countNumber !== fromApi.length+1) {    
+        
+        if(fromApi[countNumber] !== undefined) {
+          dataRaceArray[labelRace.indexOf("coca")] = fromApi[countNumber].values.coca
+          dataRaceArray[labelRace.indexOf("monster")] = fromApi[countNumber].values.monster
+          dataRaceArray[labelRace.indexOf("agua")] = fromApi[countNumber].values.agua
+          dataRaceArray[labelRace.indexOf("suco")] = fromApi[countNumber].values.suco
+          dataRaceArray[labelRace.indexOf("redbull")] = fromApi[countNumber].values.redbull
+          dataRaceArray[labelRace.indexOf("fanta")] = fromApi[countNumber].values.fanta
+  
+          chart.update();
+        }
         countNumber+=1
         
-        dataRaceArray[labelRace.indexOf("coca")] = fromApi[countNumber].values.coca
-        dataRaceArray[labelRace.indexOf("monster")] = fromApi[countNumber].values.monster
-        dataRaceArray[labelRace.indexOf("agua")] = fromApi[countNumber].values.agua
-        dataRaceArray[labelRace.indexOf("suco")] = fromApi[countNumber].values.suco
-        dataRaceArray[labelRace.indexOf("redbull")] = fromApi[countNumber].values.redbull
-        dataRaceArray[labelRace.indexOf("fanta")] = fromApi[countNumber].values.fanta
-
         chart.update();
       }else{
-        chart.update();     
+        chart.update();
         clearInterval(timer)
         recorderMedia.onstop = () => exportVideo(new Blob(chunksSeted, {type: "video/webm"}));
         recorderMedia.stop();

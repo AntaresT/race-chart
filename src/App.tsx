@@ -22,9 +22,11 @@ function App() {
 
   const { dataApi } = useDataProvider();
 
+  console.log(dataApi, "data api")
+
   const labels = ['coca', 'monster', 'agua', 'suco', 'redbull', 'fanta'];
 
-  const graphData: number[] = [1,1,1,1,1,1];
+  const graphData: number[] = [0,0,0,0,0,0];
 
   const graphBackgroundColors = [
     'rgba(158, 158, 158, 0.8)',
