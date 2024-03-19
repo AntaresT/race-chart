@@ -4,6 +4,6 @@ import { GraphProvider } from './provider/dataChart.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <GraphProvider>
-      <App />
+    <App />
   </GraphProvider>
 )
