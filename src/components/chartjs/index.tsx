@@ -19,6 +19,7 @@ import {
 } from 'chart.js';
 import { useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { labels } from '../../labels';
 
 
 ChartJS.register(
@@ -55,15 +56,24 @@ interface DataInterface {
 
 interface DataInterfaceApi {
   date: string;
-  values:{
-    coca: number;
-    monster: number;
-    agua: number;
-    suco: number;
-    redbull: number;
-    fanta: number
-  } 
+  values: any 
 }
+
+// interface DataInterfaceApi {
+//   date: string;
+//   values:{
+//     "001BC50169D7": number,
+//     "B4A2EB48A5BA": number,
+//     "001BC5017236": number,
+//     "001BC5017BF2": number,
+//     "001BC5017BB5": number,
+//     "001BC501EC2B": number,
+//     "001BC5021D57": number,
+//     "001BC5021D5A": number, 
+//     "001BC5023789": number,
+//     "001BC5024096": number
+//   } 
+// }
 
 interface DataChartInterface {
   data: DataInterface
@@ -146,7 +156,7 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
     vid.controls = true;
     document.body.appendChild(vid);
     const a = document.createElement('a');
-    a.download = 'myvid.webm';
+    a.download = 'race-chart.webm';
     a.href = vid.src;
     a.textContent = 'download the video';
     document.body.appendChild(a);
@@ -188,12 +198,17 @@ export function ChartBar({data, stacked = false, apiData}: Props) {
       if(countNumber !== fromApi.length+1) {    
         
         if(fromApi[countNumber] !== undefined) {
-          dataRaceArray[labelRace.indexOf("coca")] = fromApi[countNumber].values.coca
-          dataRaceArray[labelRace.indexOf("monster")] = fromApi[countNumber].values.monster
-          dataRaceArray[labelRace.indexOf("agua")] = fromApi[countNumber].values.agua
-          dataRaceArray[labelRace.indexOf("suco")] = fromApi[countNumber].values.suco
-          dataRaceArray[labelRace.indexOf("redbull")] = fromApi[countNumber].values.redbull
-          dataRaceArray[labelRace.indexOf("fanta")] = fromApi[countNumber].values.fanta
+          dataRaceArray[labelRace.indexOf(labels[0])] = fromApi[countNumber].values[labels[0]]
+          dataRaceArray[labelRace.indexOf(labels[1])] = fromApi[countNumber].values[labels[1]]
+          dataRaceArray[labelRace.indexOf(labels[2])] = fromApi[countNumber].values[labels[2]]
+          dataRaceArray[labelRace.indexOf(labels[3])] = fromApi[countNumber].values[labels[3]]
+          dataRaceArray[labelRace.indexOf(labels[4])] = fromApi[countNumber].values[labels[4]]
+          dataRaceArray[labelRace.indexOf(labels[5])] = fromApi[countNumber].values[labels[5]]
+          dataRaceArray[labelRace.indexOf(labels[6])] = fromApi[countNumber].values[labels[6]]
+          dataRaceArray[labelRace.indexOf(labels[7])] = fromApi[countNumber].values[labels[7]]
+          dataRaceArray[labelRace.indexOf(labels[8])] = fromApi[countNumber].values[labels[8]]
+          dataRaceArray[labelRace.indexOf(labels[9])] = fromApi[countNumber].values[labels[9]]
+
   
           chart.update();
         }

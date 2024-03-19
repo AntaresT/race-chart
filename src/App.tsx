@@ -2,6 +2,7 @@
 import { ChartBar } from "./components/chartjs";
 import { useDataProvider } from "./provider/dataChart";
 import './style.css'
+import { labels } from "./labels";
 
 interface DataType {
   labels: string[];
@@ -24,26 +25,32 @@ function App() {
 
   console.log(dataApi, "data api")
 
-  const labels = ['coca', 'monster', 'agua', 'suco', 'redbull', 'fanta'];
-
-  const graphData: number[] = [0,0,0,0,0,0];
+  const graphData = Array(labels.length).fill(0)
 
   const graphBackgroundColors = [
-    'rgba(158, 158, 158, 0.8)',
-    'rgba(244, 67, 54, 0.8)',
-    'rgba(255, 235, 59, 0.8)',
-    'rgba(255, 152, 0, 0.8)',
-    'rgba(76, 175, 80, 0.8)',
-    'rgba(21, 101, 192, 0.8)'
+    "RGB(244, 67, 54, 0.8)",
+    "RGB(15, 255, 12, 0.8)",
+    "RGB(21, 101, 192, 0.8)",
+    "RGB(255, 255, 0, 0.8)",
+    "RGB(255, 192, 203, 0.8)",
+    "RGB(128, 0, 128, 0.8)",
+    "RGB(255, 165, 0, 0.8)",
+    "RGB(12, 255, 180, 0.8)",
+    "RGB(165, 42, 42, 0.8)",
+    "RGB(128, 128, 128, 0.8)"
   ]
 
   const graphBorderColors = [
-    'rgba(158, 158, 158, 1)',
-    'rgba(244, 67, 54, 1)',
-    'rgba(255, 235, 59, 1)',
-    'rgba(255, 152, 0, 1)',
-    'rgba(76, 175, 80, 1)',
-    'rgba(21, 101, 192, 1)'
+    "RGB(255, 0, 0, 1)",
+    "RGB(0, 255, 0, 1)",
+    "RGB(0, 0, 255, 1)",
+    "RGB(255, 255, 0, 1)",
+    "RGB(255, 192, 203, 1)",
+    "RGB(128, 0, 128, 1)",
+    "RGB(255, 165, 0, 1)",
+    "RGB(0, 255, 255, 1)",
+    "RGB(165, 42, 42, 1)",
+    "RGB(128, 128, 128, 1)"
   ]
 
   const data: DataType = {
