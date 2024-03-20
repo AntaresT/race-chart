@@ -1,7 +1,7 @@
 # React Race Chart With ChartJS
 
-This project was created to resolve the need to have a race chart and export it as a webm video.
-The export code was created using the MediaRecorder com JavaScript, that allows to record the screen
+This project was created to resolve the gap to have a race chart and export it as a webm video.
+The export code was created using the MediaRecorder with JavaScript, that allows to record the screen
 and more specific part of the screen, in this case, the canvas tag that is responsible to show the Chart.
 
 ## How to run
